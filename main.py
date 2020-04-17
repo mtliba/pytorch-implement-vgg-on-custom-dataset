@@ -130,10 +130,6 @@ def main():
     optimizer = torch.optim.SGD(model.parameters(), args.lr,
                                 momentum=args.momentum,
                                 weight_decay=args.weight_decay)
-    if args.freez == True : 
-        for layer in m.children()[args.start_freez:args.end_freez]:
-            for param in layer.parameters():
-                param.grad[:] = 0
 
     if args.evaluate:
         validate(val_loader, model, criterion)
